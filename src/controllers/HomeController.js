@@ -24,7 +24,7 @@ const HomeController = {
         }
 
         return res.render("produtos/detalhes", {produto});
-    }
+    },
 };
 
 module.exports = HomeController;

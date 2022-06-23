@@ -6,7 +6,7 @@
 ✔ 6. Tela de visualização do produto do admin @done(22-06-15 21:09)
 ✔ 7. Tela de cadastro de usuário com criptografia de senha @done(22-06-23 15:04)
 ✔ 8. Tela login com session @done(22-06-23 15:04)
-☐ 9. Tela de carrinho
+✔ 9. Tela de carrinho @done(22-06-23 18:40)
 ☐ 10. Middlewares
     ☐ Log
     ☐ Multer
