@@ -13,7 +13,6 @@ const AuthController = {
         }
 
         req.session.usuario = usuario;
-        console.log(usuario);
         return res.redirect("/");
     },
     showCadastrar: (req, res) => {
@@ -25,13 +24,18 @@ const AuthController = {
 
         const verificaSeCadastrado = Usuario.findOne(email);
         if(verificaSeCadastrado){
-            return res.render("home/login", {error: "Não foi possível realizar o cadastro."})
+            return res.render("home/cadastro", {error: "Não foi possível realizar o cadastro."})
         }
 
         const usuario = {nome, email, senha:hash};
 
         Usuario.create(usuario);
 
+        return res.redirect("/login");
+    },
+
+    logout: (req, res) => {
+        req.session.destroy(error => console.log(error));
         return res.redirect("/login");
     }
 };

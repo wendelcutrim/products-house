@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const ProdutosController = require("../controllers/ProdutosController");
 const isLogin = require('../middlewares/isLogin');
+const isAdmin = require('../middlewares/isAdmin');
 
 router.use(isLogin);
+router.use(isAdmin);
 router.get("/", ProdutosController.showAllProducts);
 router.get("/cadastro", ProdutosController.showCreatePage);
 router.post("/cadastro", ProdutosController.store);

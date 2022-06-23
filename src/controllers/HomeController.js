@@ -1,4 +1,3 @@
-const { localsName } = require("ejs");
 const ProdutoModel = require("../models/produtoModel");
 
 const HomeController = {
