@@ -17,15 +17,15 @@ const ProdutosController = {
     },
 
     store: (req, res) => {
-        const { imagem, nome, preco, ativo, descricao } = req.body;
+        const { nome, preco, ativo, descricao } = req.body;
         const produto = {
             nome,
-            imagem,
+            imagem: `/img/uploads/${req.file.filename}`,
             preco,
             ativo: (ativo ? true : false),
             descricao,
         }
-
+        console.log(req.file);
         ProdutoModel.save(produto);
 
         return res.redirect("/adm/produtos");
@@ -39,7 +39,12 @@ const ProdutosController = {
 
     editProduct: (req, res) => {
         const {id} = req.params;
-        const {nome, imagem, preco, ativo, descricao} = req.body;
+        const {nome, preco, ativo, descricao} = req.body;
+
+        if(req.file){
+            imagem = `/img/uploads/${req.file.filename}`
+        }
+
         const produto = {
             id,
             nome,
