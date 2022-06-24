@@ -23,6 +23,41 @@ const ProdutosController = {
         ProdutoModel.save(produto);
 
         return res.redirect("/adm/produtos");
+    },
+
+    showOneProduct: (req, res) => {
+        const {id} = req.params;
+        const produto = ProdutoModel.findById(id);
+        return res.render("adm/produtos/detalhes", {produto});
+    },
+
+    showEditProduct: (req, res) => {
+        const {id} = req.params;
+        const produto = ProdutoModel.findById(id);
+        return res.render("adm/produtos/editar", {produto});
+    },
+
+    edit: (req, res) => {
+        const {id} = req.params;
+        const { imagem, nome, preco, ativo, descricao } = req.body;
+
+        const produto = {
+            id,
+            nome,
+            imagem,
+            preco,
+            ativo: (ativo ? true : false),
+            descricao
+        }
+
+        ProdutoModel.update(id, produto);
+        return res.redirect("/adm/produtos");
+    },
+
+    delete: (req, res) => {
+        const {id} = req.params;
+        ProdutoModel.delete(id);
+        return res.redirect("/adm/produtos");
     }
 
 };
