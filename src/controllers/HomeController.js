@@ -3,6 +3,11 @@ const ProdutoModel = require("../models/produtoModel");
 const HomeController = {
     showIndex: (req, res) => {
         const produtos = ProdutoModel.findAll();
+
+        if(req.session.usuario){
+            return res.render("home/landingpage", {produtos, usuario:req.session.usuario});
+        }
+
         return res.render("home/landingpage", {produtos});
     },
 
