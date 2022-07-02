@@ -27,19 +27,27 @@
                     <div class="f">Vendido e entregue por: <b>Digital House! </b> |<b> Em estoque</b></div>
                     <div class="d-flex align-center mt-3 justify-content-between">
                         <div>
-                            <span>R$ 3.058,95</span>
+                            <h2><%=produto.nome%></h2>
+                            <!-- <span>R$ 3.058,95</span> -->
                             <h4>R$ <%= produto.preco %></h4>
                             <span >À vista no PIX <span>com até <b>5% OFF</b></span></span>
                         </div>
-                        <button  class="btn btn-success">COMPRAR</button>
+                    
+                        <form action="/carrinho/adicionar" method="POST">
+                            <input type="hidden" name="productId" value="<%=produto.id%>">
+                            <input type="hidden" name="nome" value="<%=produto.nome%>">
+                            <input type="hidden" name="imagem" value="<%=produto.imagem%>">
+                            <input type="hidden" name="preco" value="<%=produto.preco%>">
+                            <button type='submit' class="btn btn-success">COMPRAR</button>
+                        </form>
                     </div>
                    
-                    <div class="d-flex flex-column mt-3">
+                    <!-- <div class="d-flex flex-column mt-3">
                         <b>R$ 1.998,95</b>
                         <span>Em até 10 x de <b>R$ 199,89</b> sem juros no cartão</span>
                         <span>Ou em 1x no cartão com até <b>5 % OFF</b></span>
                         <button>Ver mais opções de pagamento</button>
-                    </div>
+                    </div> -->
 
                     <div class="mt-5">
                         <%= produto.descricao %>
